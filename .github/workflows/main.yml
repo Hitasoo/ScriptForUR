@@ -1,0 +1,31 @@
+name: RFQ Parser
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'   # запуск каждые 30 минут (рекомендую, чтобы не исчерпать лимит)
+  workflow_dispatch:
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+
+    - name: Run script
+      run: python main.py
+      env:
+        YANDEX_LOGIN: ${{ secrets.YANDEX_LOGIN }}
+        YANDEX_APP_PASSWORD: ${{ secrets.YANDEX_APP_PASSWORD }}
+        SENDER_TO_CHECK: ${{ secrets.SENDER_TO_CHECK }}
+        SERVICE_ACCOUNT_JSON: ${{ secrets.SERVICE_ACCOUNT_JSON }}
+        SPREADSHEET_NAME: ${{ secrets.SPREADSHEET_NAME }}
+        WORKSHEET_NAME: ${{ secrets.WORKSHEET_NAME }}
