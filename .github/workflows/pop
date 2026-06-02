@@ -1,0 +1,31 @@
+name: RFQ Parser
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'   # лучше каждые 30 минут, чтобы не исчерпать лимит
+  workflow_dispatch:
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+
+    - name: Run script
+      run: python main.py
+      env:
+        YANDEX_LOGIN: ${{ secrets.sales@aviapazl.ru }}
+        YANDEX_APP_PASSWORD: ${{ secrets.gzzcxhbpkjkqehrd }}
+        SENDER_TO_CHECK: ${{ secrets.voroshilov.06@internet.ru }}
+        SERVICE_ACCOUNT_JSON: ${{ secrets.""type": "service_account", "project_id": "scriptfortable","private_key_id": "79d196dd6860a16299ac1b518a6d8dc1b54a62fd","private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC0cDVJ7NpK8h9u\nbmfN4ka9cUUAzibpWT+A5A49Gw07jDP55dkyQ8OrNHEKICxtAAIh+kQFdlK7VG5n\nMV+5Aj4PIC9Jyq8dUvvr5lx/woiOasB7O++eHD8KCIpm44SdDqJhNCoOkJnpCiJX\nMjL6iSmKFuH2kO6yNGnjgU/tTeoJehLLJxiHCrzJOrVmG2pS0ecGIQpCjBGTPaeI\nhgzXohDqq5hHWvlKoqaCFJcD9Xu6uek8Lsh621Fs1vUXZcTW1ANtd2nRi1b4xDH5\nK5htR7n84lFrWLvUp9prv/cuwYlDNv+MTyDwUT+cavxQiIpdHakrvqMzV14x95fm\nXcwBbvwXAgMBAAECggEAD4GVEsVH/SjRiqvyP78yVRVm2KrerS7+RhVTI+0vNe7W\niKM4BxnLturKzBP3vWZCyKi5L777XR3kXvnfQAbxTlt1tOG2Ks721070pAYTtil2\nYSDFdtD2meYh/rWOr/CSA8h31MiYcW5thRDLULx41WUiBg5udOIMN4DlXX9UnXu7\nLbNGJB+VSOEziKsAcNBQYis9SufDcOuzobmwz/gbGm9cMe+bTGXQ89n3w86WAqrB\ncUFdhPa/K9pWWBm8ItP/19MSu+fK79yIPi+gN/j9GS0ZiGpUR0fs0Q8BRA67pJOb\neiRjIRyn97xFqXrqDd3lA8VAWWqx8Vkv9yODhODwAQKBgQDcwABvyHZwfI6hPV5b\nYkt3rHnROTmJ9AmAXkgnLMQobhtlMnEYqMvtxyfyzpow5Kt0R7sB2+tDy7ebe+ui\nd+kWYUa63ry+8IJ+YBZQ59/NxMm9fPeLp/eIRWlhw0tq6VJQrhr9BEwXqiGGeW2/\nWBA1Z4gs193XoNAcxYWBCt4Q5QKBgQDRQE/waIA76jIPWM4ZT8N4sR/5fABsUWys\nX3RTxhkKjYrOqL2juQ+RvsqorFc1sDQWlzvU4Oz0yLC0Z9ZOKdITyGvW/rExI42y\nYi4UREKZ8FwXURz5jlDcpoc0jaSteTM54R5yN6qPvy9llCtcEzyYDe2MPG1feWAm\nBccUw3RVSwKBgQDccmU9PFyC8vBgtu9OpTemODiiptn+GRWP+xdk/8CYe3SiN6BX\ntuGH//W19Xpnz0QlaCipr5wfZQZjoHntEoBT2CsRHLQyne5DE+PVQenvDFFHCNAQ\nyFla3a5icewTxRNt/KB5AdyXWVAHgaYGioQNQOntllk1J6QMx3gOKPMgvQKBgE9A\nEUaW/YIzp7QCSURy3jB2vQprOWnMyODb4h3cWB2UD+9HH1PDwi7L2MtbQkhWLNQl\ngQaWDYiD/dDFxvehhSvy60zo90kKEx9tadBJLgRJcUdvdA7cJKn89BYmUylUTt9r\n8HEHvjRlD1lkbauYqYlZNQ+4zx+qw4yDAaxOfl/TAoGACQsvkAdV4UH9eYwA5kSd\nLkawZ0G3xDYHItASiAKQUkdhIKK9Jff/LMDOQbj0tqa++O/eRYt4fyYoFBXOx6af\nEyWvaM0hG8N2Ll2467hktacrPpOSHyUIkKFDLutQuz4hWg3g/usJKQbUhncZsCA0\neMlcHgUcJ3qi6J+5cf5wAYc=\n-----END PRIVATE KEY-----\n","client_email": "sheet-writer@scriptfortable.iam.gserviceaccount.com","client_id": "117050590319783973381","auth_uri": "https://accounts.google.com/o/oauth2/auth","token_uri": "https://oauth2.googleapis.com/token","auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs","client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/sheet-writer%40scriptfortable.iam.gserviceaccount.com","universe_domain": "googleapis.com"}}
+        SPREADSHEET_NAME: ${{ secrets.UR }}
+        WORKSHEET_NAME: ${{ secrets.JUN}}
